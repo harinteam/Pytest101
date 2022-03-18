@@ -1,15 +1,22 @@
 from selenium import webdriver
+import pytest
+
 
 driver = webdriver.Chrome()
+driver.minimize_window()
 
-def test_openGoogle():
-    driver.get("https://www.google.com")
+alamat = [
+    ("https://www.google.com", "Google"),
+    ("https://www.facebook.com", "Facebook – log in or sign up")
+]
+
+@pytest.mark.parametrize('address, result', alamat)
+
+def test_openGoogle(address, result):
+    driver.get(address)
     title = driver.title
 
-    assert title == 'Google'
+    assert title == result
 
-def test_openFacebook():
-    driver.get("https://www.facebook.com")
-    title = driver.title
 
-    assert title == 'Facebook – log in or sign up'
+
