@@ -1,6 +1,3 @@
-# from _pytest import mark
-# from _pytest.mark.structures import Mark
-import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import pytest
@@ -26,15 +23,13 @@ def setup():
 # =========================================================================
 # SCENARIO / TESTCASE 1 : LOGIN WITH CORRECT USERNAME AND CORRECT PASSWORD
 # =========================================================================
+
+@pytest.mark.positivetest
 def test_login_success(setup):
     setup.find_element(By.ID, "userName").send_keys("umarAlfatih")
     setup.find_element(By.ID, "password").send_keys("asDF12#$")
     setup.find_element(By.ID, "login").click()
-    time.sleep(3)
-
-    # mainHeader = setup.find_element(By.CLASS_NAME, "main-header").text
-
-    # assert mainHeader == "Profile"
+    
 
     userName = setup.find_element(By.ID, "userName-value").text
 
@@ -44,7 +39,7 @@ def test_login_success(setup):
 # SCENARIO / TESTCASE 2-3-4 : LOGIN WITH INPUT COMBINATION CONTAIN WRONG VALUE
 # ============================================================================
 
-
+@pytest.mark.negativetest
 @pytest.mark.parametrize('a,b', Kunci)
 def test_login_failed(setup, a,b):
     setup.find_element(By.ID, "userName").send_keys(a)
@@ -55,4 +50,3 @@ def test_login_failed(setup, a,b):
 
     assert invalidText == "Invalid username or password!"
 
-# setup.quit()
