@@ -8,15 +8,16 @@ Kunci = [
     ("hanin", "asDG12#4")           # username wrongg password wrong
 ]
 
-    # options = webdriver.ChromeOptions()
-    # options.add_experimental_option('excludeSwitches', ['enable-logging']) 
+options = webdriver.ChromeOptions()
+options.add_experimental_option('excludeSwitches', ['enable-logging']) 
+
 
 # ==========================
 # FIXTURE
 # ==========================
 @pytest.fixture
 def setup():
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(options=options)
     driver.get("https://demoqa.com/login")
     driver.minimize_window()
     driver.implicitly_wait(10)  
