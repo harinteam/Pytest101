@@ -10,7 +10,8 @@ Kunci = [
 
 options = webdriver.ChromeOptions()
 options.add_experimental_option('excludeSwitches', ['enable-logging']) 
-
+options.headless = True
+options.add_argument("--window-size=1920,1080")
 
 # ==========================
 # FIXTURE
