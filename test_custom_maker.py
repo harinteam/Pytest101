@@ -8,6 +8,9 @@ Kunci = [
     ("hanin", "asDG12#4")           # username wrongg password wrong
 ]
 
+    # options = webdriver.ChromeOptions()
+    # options.add_experimental_option('excludeSwitches', ['enable-logging']) 
+
 # ==========================
 # FIXTURE
 # ==========================
@@ -19,6 +22,8 @@ def setup():
     driver.implicitly_wait(10)  
     yield driver
     driver.quit()
+
+    
 
 # =========================================================================
 # SCENARIO / TESTCASE 1 : LOGIN WITH CORRECT USERNAME AND CORRECT PASSWORD
